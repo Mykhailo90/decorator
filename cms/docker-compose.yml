@@ -1,0 +1,81 @@
+version: '3.2'
+
+networks:
+  default:
+    driver: bridge
+
+services:
+
+  memcached:
+    image: memcached:alpine
+    container_name: cms-memcached
+    networks:
+      - default
+
+  redis:
+    image: redis:alpine
+    networks:
+      - default
+
+  mysql:
+    image: mysql:5.7
+    container_name: cms-mysql
+    working_dir: /app
+    volumes:
+      - ./cms:/app
+    environment:
+      - MYSQL_ROOT_PASSWORD=88888888
+      - MYSQL_DATABASE=crm
+      - MYSQL_USER=msa
+      - MYSQL_PASSWORD=88888888
+    ports:
+      - "8083:3306"
+    networks:
+      - default
+    restart: always
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_HOST: cms-mysql
+      PMA_USER: msa
+      PMA_PASSWORD: 88888888
+    ports:
+      - "8088:80"
+    restart: always
+    depends_on:
+      - mysql
+    networks:
+      - default
+
+  elasticsearch:
+    image: elasticsearch:6.5.4
+    container_name: cms-elasticsearch
+    ports:
+      - "9200:9200"
+    networks:
+      - default
+
+  frontend:
+    build: frontend
+    networks:
+      - default
+    ports:
+      - 20080:80
+    volumes:
+      # Re-use local composer cache via host-volume
+      - ~/.composer-docker/cache:/root/.composer/cache:delegated
+      # Mount source-code for development
+      - ./:/app
+
+  backend:
+    build: backend
+    ports:
+      - 21080:80
+    volumes:
+      # Re-use local composer cache via host-volume
+      - ~/.composer-docker/cache:/root/.composer/cache:delegated
+      # Mount source-code for development
+      - ./:/app
+    networks:
+      - default
