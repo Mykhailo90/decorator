@@ -3,79 +3,15 @@
 /* @var $this yii\web\View */
 
 $this->title = 'Два дыхания декора';
+
 ?>
 
 
 <!-- Header -->
-<header>
-    <div class="container">
-        <div class="slider-container">
-            <div class="intro-text">
-                <div id="big-logo">
-                    <img src="/img/big-logo.png" alt="Dva Dyhaniya Decor...">
-                </div>
-                <a href="#about" class="page-scroll btn btn-xl">Почему мы...</a>
-            </div>
-        </div>
-    </div>
-</header>
+<?= frontend\components\sections\MainBannerWidget::widget();?>
 
-<section id="about" class="light-bg">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <div class="section-title">
-                    <h2>О нас</h2>
-                    <p>Команда Dva Duhaniya Decor – это сумасшедшие  и влюбленные в свою работу люди!
-                        Это люди  где каждый художник, архитектор, декоратор, дизайнер, технолог – инноватор,
-                        химик, физик, немного  маг и волшебник! Мы создаем – то, во что верим и любим!
-                        Верим, что важна каждая деталь!</p>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <!-- about module -->
-            <div class="col-md-3 text-center">
-                <div class="mz-module-about">
-                    <i class="fa fa-briefcase ot-circle"></i>
-                    <h3>Комплексный подход</h3>
-                    <p>Создаем концепции от небольшой детали до масштабного оформления!</p>
-                </div>
-            </div>
-            <!-- end about module -->
-            <!-- about module -->
-            <div class="col-md-3 text-center">
-                <div class="mz-module-about">
-                    <i class="fa fa-photo ot-circle"></i>
-                    <h3>Эксклюзивность</h3>
-                    <p>Наши кейсы всегда уникальны! А наши идеи и желания часто опережают время...</p>
-                </div>
-            </div>
-            <!-- end about module -->
-            <!-- about module -->
-            <div class="col-md-3 text-center">
-                <div class="mz-module-about">
-                    <i class="fa fa-camera-retro ot-circle"></i>
-                    <h3>Лучшие фотозоны</h3>
-                    <p>Наши фото-стенды способны воссоздать любой из миров... Мы способны окунуть вас как в "глубокую древность",
-                        так и отправить путешествовать в далекое будущее...
-                    </p>
-                </div>
-            </div>
-            <!-- end about module -->
-            <!-- about module -->
-            <div class="col-md-3 text-center">
-                <div class="mz-module-about">
-                    <i class="fa fa-cube ot-circle"></i>
-                    <h3>Магия</h3>
-                    <p> Работая с нами, Вы всегда получите больше, чем расчитывали!</p>
-                </div>
-            </div>
-            <!-- end about module -->
-        </div>
-    </div>
-    <!-- /.container -->
-</section>
+<?= frontend\components\sections\AboutWidget::widget();?>
+
 
 <section >
     <div class="container">

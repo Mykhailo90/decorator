@@ -35,6 +35,9 @@ class NavMenuWidget extends Widget
         $str = '';
 
         foreach ($data as $menuItem) {
+            if ($menuItem['href'] == '#main') {
+                continue;
+            }
             $str .= $this->catToTemplate($menuItem);
         }
 
